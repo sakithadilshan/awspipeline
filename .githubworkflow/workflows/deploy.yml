@@ -1,0 +1,22 @@
+nmae:  AWS OIDC Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on : ubuntu latest
+
+  steps:
+  # CheckOut therepository code
+  - name: Checkout code
+    uses: actions/checkout@2
+
+  #Set up AWS credentials fr OIDC Authentication
+  - name: Set up AWS credentials
+    uses:  aws-actions/configure-aws-credentials@v1
+    with:
+        role-to-assume: arn:aws:iam::885041424953:role/CdkProjectsStack-OIDSCRole33619A92-p1RWtGjZcHFf
+        aws-region: ap-southeast-2  # Specify your AWS region
