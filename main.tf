@@ -3,7 +3,7 @@ provider "aws"{
 }
 
 resource "aws_s3_bucket" "tftest-bucket" {
-    name = "tf-test-bucket"
+    bucket = "tf-test-bucket"
     acl = "private"
 
 
