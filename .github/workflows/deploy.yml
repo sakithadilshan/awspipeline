@@ -15,19 +15,36 @@ env:
 # Permission can be added at job level or workflow level    
 permissions:
       id-token: write   # This is required for requesting the JWT
-      contents: read    # This is required for actions/checkout
+      contents: read    # This is required for actions/checkout#
 jobs:
   AssumeRoleAndCallIdentity:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
+      
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
           role-to-assume: arn:aws:iam::885041424953:role/CdkProjectsStack-OIDSCRole33619A92-p1RWtGjZcHFf #change to reflect your IAM role’s ARN
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.11.3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+      
+      
       # Hello from AWS: WhoAmI#
       - name: Sts GetCallerIdentity
         run: |
