@@ -6,5 +6,12 @@ resource "aws_s3_bucket" "tftest-bucket" {
     bucket = "tf-test-bucket-dilshanr"
     acl = "private"
 
-
 }
+
+# Use ec2-module #
+module "ec2_module"{
+    source = "./ec2_module"
+    ami_id  = "ami-034488765f896f58f"
+    key_name = "tfkeypair"
+    instance_name = "TestTFInstance"
+ }
