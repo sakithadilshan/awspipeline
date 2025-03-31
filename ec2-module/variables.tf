@@ -7,7 +7,7 @@ variable "ami_id"{
 variable "instance_type"{
     description = "The instance type"
     type = string
-    default = "t2.micro"
+    default = "t2.micro";
 }
 
 variable "key_name" {

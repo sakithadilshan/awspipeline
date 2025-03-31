@@ -13,5 +13,5 @@ module "ec2_module"{
     source = "./ec2-module"
     ami_id  = "ami-034488765f896f58f"
     key_name = "tfkeypair"
-    Instance_name = "TestTFInstance"
+    Instance_Name = "Terraform_EC2"
  }
