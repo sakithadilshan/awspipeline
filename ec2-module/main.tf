@@ -5,6 +5,6 @@ resource "aws_instance" "ec2_module_test" {
     key_name = var.key_name
 
     tags = {
-        name = var.instance_name
+        name = var.Instance_Name
     }
 }

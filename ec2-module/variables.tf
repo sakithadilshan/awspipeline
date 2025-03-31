@@ -7,7 +7,7 @@ variable "ami_id"{
 variable "instance_type"{
     description = "The instance type"
     type = string
-    default = "t2.microz'
+    default = "t2.micro"
 }
 
 variable "key_name" {
@@ -16,17 +16,9 @@ variable "key_name" {
 
 }
 
-variable "Instance Name"{
+variable "Instance_Name"{
     description = "Instance Name"
     type = string
 }
 
 
-resource "aws_instance" "ec2_module_test" {
-    ami = var.ami_id
-    instance_type = var.instance_type
-    key_name = var.key_name
-
-    tags = {
-        name = var.instance_name
-    }
